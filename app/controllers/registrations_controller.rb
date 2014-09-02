@@ -12,6 +12,8 @@ class RegistrationsController < ApplicationController
       session[:user_id] = @user.id
       redirect_to root_path
     else
+      @user = User.new(user_params)
+      @user.valid?
       render :new
     end
   end
